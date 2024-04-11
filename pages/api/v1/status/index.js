@@ -16,10 +16,8 @@ async function status(req, res) {
   });
   const connections = openedConnections.rows[0].count;
 
-  const maxConnectionsResult = await database.query(
-    "SELECT  max_val  FROM   pg_settings  WHERE  name = 'max_connections' ;",
-  );
-  const maxConnections = maxConnectionsResult.rows[0].max_val;
+  const maxConnectionsResult = await database.query("SHOW max_connections ;");
+  const maxConnections = maxConnectionsResult.rows[0].max_connections;
 
   res.status(200).json({
     updated_at: updatedAt,
@@ -32,5 +30,4 @@ async function status(req, res) {
     },
   });
 }
-//fajfajklfajfklasj
 export default status;
