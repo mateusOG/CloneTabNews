@@ -34,4 +34,3 @@ async function status(req, res) {
 }
 
 export default status;
-// conexão máxima - conexões usadas
